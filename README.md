@@ -27,7 +27,7 @@ dataset. They have the following fields:
 
 Questionairres can by using the `create_questionnaires` command-line utility:
 ```{bash}
-python -m app.utils.create_questionnaires [see help for options]
+python -m app.create_questionnaires [see --help for details]
 ```
 In order to use this utility, you will need access to the MAE dataset JSON
 files. You will also need a collection of known answer files.
@@ -41,10 +41,7 @@ process).
 
 You can then use the `deploy` command-line utility:
 ```{bash}
-python -m app.deploy \h
-    --dev [or --prod] \
-    --known PATH TO KNOWN ANSWERS FILE \
-    [QUESTIONNAIRE FILES TO DEPLOY]
+python -m app.deploy [see --help for details]
 ```
 Specifying the `--dev` flag will deploy the HITs to the Mechanical Turk Sandbox
 environment, you should do this to ensure that there are no problems with the
@@ -56,16 +53,18 @@ Checking HITs
 ---
 
 To reduce the burden of checking worker submissions:
+
 - Any HITs where workers faiyl to correctly answer the known question are
   automatically rejected.
 - Any HITs where workers agree on the answers to all unknown questions are
   automatically accepted. (TODO: Make sure to exclude the known question when
   deploying).
+
 Any HIT which is not automatically accepted/rejected must be manually reviewed.
 To help with this review process we have designed a simple flask app for
 reviewing. This can be used by running:
 ```{bash}
-flask run app.py
+python -m app.review
 ```
 And then entering the URL printed out in your browser.
 
@@ -74,5 +73,5 @@ Collecting Results
 ---
 To collect results run:
 ```{bash}
-python -m app.collect_results [see help for options]
+python -m app.collect_results [see --help for details]
 ```
