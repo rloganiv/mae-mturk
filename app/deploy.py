@@ -4,7 +4,7 @@ import argparse
 import boto3
 import sys
 
-from config import ConfigDev, ConfigProd
+from app.config import ConfigDev, ConfigProd
 
 
 FLAGS = None

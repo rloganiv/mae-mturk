@@ -7,7 +7,8 @@ from __future__ import print_function
 import argparse
 import json
 from itertools import cycle
-from vocab import ValueSet
+
+from app.vocab import ValueSet
 
 
 FLAGS = None
@@ -163,7 +164,8 @@ class QuestionnaireBuilder(object):
     def image_list(self):
         return list(self._images)
 
-    @image_list.setter(self):
+    @image_list.setter
+    def image_list(self, x):
         raise AttributeError('Cannot assign QuestionnaireBuilder.image_list')
 
 
